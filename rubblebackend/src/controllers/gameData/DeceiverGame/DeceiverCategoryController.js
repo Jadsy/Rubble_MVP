@@ -28,7 +28,7 @@ exports.getSingleDeceiverCategory = async req => {
 }
 
 // Get category questions
-exports.getCategoryAnswers = async req => {
+exports.getCategoryQuestions = async req => {
 	try {
 		const id = req.id 
 		const questions = await Question.find({ category_id: id })
