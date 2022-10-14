@@ -3,6 +3,11 @@ const boom = require('@hapi/boom')
 
 // Get Data Models
 const MaffiaGame = require('../../../models/realtimeData/MaffiaGame/MaffiaGame')
+const Mafia = require('../../../models/realtimeData/MaffiaGame/Mafia')
+const Civilian = require('../../../models/realtimeData/MaffiaGame/Civilian')
+const Narrator = require('../../../models/realtimeData/MaffiaGame/Narrator')
+const Police = require('../../../models/realtimeData/MaffiaGame/Police')
+const Doctor = require('../../../models/realtimeData/MaffiaGame/Doctor')
 
 // Get all 
 exports.getMaffiaGames = async () => {
@@ -54,6 +59,56 @@ exports.deleteMaffiaGame = async req => {
 		const id = req.id
 		const maffiaGame = await MaffiaGame.findByIdAndRemove(id)
 		return maffiaGame
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGameCivilians = async req => {
+	try {
+		const id = req.id 
+		const civilians = await Civilian.find({ maffia_game_id: id })
+		return civilians
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGameMafias = async req => {
+	try {
+		const id = req.id 
+		const mafias = await Mafia.find({ maffia_game_id: id })
+		return mafias
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGameDoctor = async req => {
+	try {
+		const id = req.id 
+		const doctor = await Doctor.find({ maffia_game_id: id })
+		return doctor
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGameNarrator = async req => {
+	try {
+		const id = req.id 
+		const narrator = await Narrator.find({ maffia_game_id: id })
+		return narrator
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGamePolice = async req => {
+	try {
+		const id = req.id 
+		const police = await Police.find({ maffia_game_id: id })
+		return police
 	} catch (err) {
 		throw boom.boomify(err)
 	}

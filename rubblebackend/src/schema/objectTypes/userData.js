@@ -9,7 +9,7 @@ const {
 	GraphQLBoolean
 } = graphql
 
-exports.answerType = new GraphQLObjectType({
+exports.userType = new GraphQLObjectType({
     name: 'User',
     fields: () => ({
         _id: { type: GraphQLID },
