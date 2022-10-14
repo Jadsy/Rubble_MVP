@@ -4,6 +4,8 @@ import 'package:rubblefrontend/compnents/common_textfield.dart';
 import 'package:rubblefrontend/game_select_page.dart';
 import 'package:rubblefrontend/signup_page.dart';
 
+import 'compnents/mycolors.dart';
+
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
 
@@ -78,10 +80,9 @@ class _LogInPageState extends State<LogInPage> {
                   ),
                 );
               },
-              child: const Text(
+              child: Text(
                 "Create one",
-                style: TextStyle(
-                    color: Color.fromRGBO(244, 209, 68, 1), fontSize: 16),
+                style: TextStyle(color: yellowButton, fontSize: 16),
               ))
         ],
       )),

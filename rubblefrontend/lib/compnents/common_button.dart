@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mycolors.dart';
 
 // ignore: must_be_immutable
 class CommonButton extends StatelessWidget {
@@ -13,7 +14,7 @@ class CommonButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromRGBO(244, 209, 68, 1),
+            backgroundColor: yellowButton,
             padding: const EdgeInsets.all(20.0),
           ),
           onPressed: onPressed,

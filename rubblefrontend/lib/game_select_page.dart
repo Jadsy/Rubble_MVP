@@ -29,7 +29,7 @@ class GameSelectPage extends StatelessWidget {
       ),
       body: Center(
         child: ListView(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           children: const [
             GameButton(
               mycolor: Color.fromRGBO(71, 29, 90, 1),
@@ -40,7 +40,7 @@ class GameSelectPage extends StatelessWidget {
             ),
             GameButton(
               mycolor: Color.fromRGBO(242, 76, 60, 1),
-              txt: "Mafia",
+              txt: "Maffia",
             ),
             SizedBox(
               height: 20,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/intro_page_three.dart';
 import 'compnents/common_button.dart';
+import 'compnents/mycolors.dart';
 
 class IntroPage2 extends StatefulWidget {
   const IntroPage2({super.key});
@@ -40,33 +41,31 @@ class _IntroPage2State extends State<IntroPage2> {
             textAlign: TextAlign.center,
           ),
           const Spacer(),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
-                Spacer(
-                  flex: 10,
-                ),
-                Icon(
-                  Icons.circle,
-                  color: Color.fromRGBO(31, 36, 48, 1),
-                  size: 10,
-                ),
-                Spacer(),
-                Icon(
-                  Icons.circle,
-                  color: Color.fromRGBO(244, 209, 68, 1),
-                  size: 10,
-                ),
-                Spacer(),
-                Icon(
-                  Icons.circle,
-                  color: Color.fromRGBO(31, 36, 48, 1),
-                  size: 10,
-                ),
-                Spacer(
-                  flex: 10,
-                )
-              ]),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+            const Spacer(
+              flex: 10,
+            ),
+            const Icon(
+              Icons.circle,
+              color: Color.fromRGBO(31, 36, 48, 1),
+              size: 10,
+            ),
+            const Spacer(),
+            Icon(
+              Icons.circle,
+              color: yellowButton,
+              size: 10,
+            ),
+            const Spacer(),
+            const Icon(
+              Icons.circle,
+              color: Color.fromRGBO(31, 36, 48, 1),
+              size: 10,
+            ),
+            const Spacer(
+              flex: 10,
+            )
+          ]),
           const Spacer(),
           CommonButton(
             name: "Continue",
