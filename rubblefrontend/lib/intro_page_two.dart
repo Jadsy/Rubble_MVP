@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/intro_page_three.dart';
-import 'compnents/common_button.dart';
-import 'compnents/mycolors.dart';
+import 'components/common_button.dart';
+import 'components/mycolors.dart';
 
 class IntroPage2 extends StatefulWidget {
   const IntroPage2({super.key});
@@ -20,10 +20,10 @@ class _IntroPage2State extends State<IntroPage2> {
           const Spacer(
             flex: 2,
           ),
-          const Text(
+          Text(
             "Losing \nsucks!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 48,
               fontWeight: FontWeight.bold,
             ),
@@ -32,10 +32,10 @@ class _IntroPage2State extends State<IntroPage2> {
           const Spacer(),
           Image.asset("images/intro2.png"),
           const Spacer(),
-          const Text(
+          Text(
             "Designed to appeal for \naudience play along!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 20,
             ),
             textAlign: TextAlign.center,
@@ -45,9 +45,9 @@ class _IntroPage2State extends State<IntroPage2> {
             const Spacer(
               flex: 10,
             ),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(),
@@ -57,9 +57,9 @@ class _IntroPage2State extends State<IntroPage2> {
               size: 10,
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(

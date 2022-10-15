@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'mycolors.dart';
+
 class GameButton extends StatelessWidget {
   final Color mycolor;
   final String txt;
@@ -21,7 +23,7 @@ class RPSCustomPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint paint0Fill = Paint()..style = PaintingStyle.fill;
-    paint0Fill.color = const Color.fromRGBO(31, 36, 48, 1);
+    paint0Fill.color = myDarkGrey;
     canvas.drawRRect(
         RRect.fromRectAndCorners(Rect.fromLTWH(0, 0, size.width, size.height),
             bottomRight: Radius.circular(size.width * 0.05504587),
@@ -30,8 +32,8 @@ class RPSCustomPainter extends CustomPainter {
             topRight: Radius.circular(size.width * 0.05504587)),
         paint0Fill);
 
-    const textStyle = TextStyle(
-      color: Colors.white,
+    var textStyle = TextStyle(
+      color: myWhite,
       fontSize: 20,
     );
     var textSpan = TextSpan(

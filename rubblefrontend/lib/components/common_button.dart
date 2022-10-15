@@ -20,10 +20,8 @@ class CommonButton extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             name,
-            style: const TextStyle(
-                color: Color.fromRGBO(5, 11, 24, 1),
-                fontSize: 20,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: rubbleColor, fontSize: 20, fontWeight: FontWeight.bold),
           ),
         ),
       ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/login_page.dart';
-import 'compnents/common_button.dart';
-import 'compnents/mycolors.dart';
+import 'components/common_button.dart';
+import 'components/mycolors.dart';
 
 class IntroPage3 extends StatefulWidget {
   const IntroPage3({super.key});
@@ -20,10 +20,10 @@ class _IntroPage3State extends State<IntroPage3> {
           const Spacer(
             flex: 2,
           ),
-          const Text(
+          Text(
             "Easy as \n1, 2, 3",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 48,
               fontWeight: FontWeight.bold,
             ),
@@ -35,10 +35,10 @@ class _IntroPage3State extends State<IntroPage3> {
             child: Image.asset("images/intro3.png"),
           ),
           const Spacer(),
-          const Text(
+          Text(
             "Join a game using your own \nmobile device!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 20,
             ),
             textAlign: TextAlign.center,
@@ -48,15 +48,15 @@ class _IntroPage3State extends State<IntroPage3> {
             const Spacer(
               flex: 10,
             ),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(),
