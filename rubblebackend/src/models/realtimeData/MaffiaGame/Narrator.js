@@ -6,7 +6,8 @@ const narratorSchema = new mongoose.Schema({
     //userData/User
   user_id: ObjectId,
   // gameData/MaffiaGame/Role
-  role_id: ObjectId
+  role_id: ObjectId,
+  maffia_game_id: ObjectId
 })
 
 module.exports = mongoose.model("Narrator", narratorSchema)

@@ -11,10 +11,10 @@ const {
 } = graphql
 
 // Chameleon Game controllers
-exports.chameleonCategoryController = require('../../controllers/gameData/ChameleonGame/ChameleonCategoryController')
+const chameleonCategoryController = require('../../controllers/gameData/ChameleonGame/ChameleonCategoryController')
 
 // DeceiverGame controllers
-exports.deceiverCategoryController = require('../../controllers/gameData/DeceiverGame/DeceiverCategoryController')
+const deceiverCategoryController = require('../../controllers/gameData/DeceiverGame/DeceiverCategoryController')
 
 exports.answerType = new GraphQLObjectType({
     name: 'Answer',

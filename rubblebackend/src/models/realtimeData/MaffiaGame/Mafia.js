@@ -7,7 +7,8 @@ const mafiaSchema = new mongoose.Schema({
   user_id: ObjectId,
   // gameData/MaffiaGame/Role
   role_id: ObjectId,
-  is_alive: Boolean
+  is_alive: Boolean,
+  maffia_game_id: ObjectId
 })
 
 module.exports = mongoose.model("Mafia", mafiaSchema)
