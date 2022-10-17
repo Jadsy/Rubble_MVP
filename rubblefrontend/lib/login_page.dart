@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rubblefrontend/compnents/common_button.dart';
-import 'package:rubblefrontend/compnents/common_textfield.dart';
+import 'package:rubblefrontend/components/common_button.dart';
+import 'package:rubblefrontend/components/common_textfield.dart';
 import 'package:rubblefrontend/game_select_page.dart';
 import 'package:rubblefrontend/signup_page.dart';
 
-import 'compnents/mycolors.dart';
+import 'components/mycolors.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});
@@ -25,19 +25,19 @@ class _LogInPageState extends State<LogInPage> {
           const Spacer(
             flex: 3,
           ),
-          const Text(
+          Text(
             "Login now",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 24,
               fontWeight: FontWeight.bold,
             ),
             textAlign: TextAlign.center,
           ),
-          const Text(
+          Text(
             "\nWelcome back to Rubble! Enter your email address \nand your password to start your adventure!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 14,
             ),
             textAlign: TextAlign.center,
@@ -65,10 +65,9 @@ class _LogInPageState extends State<LogInPage> {
           const Spacer(
             flex: 7,
           ),
-          const Text(
+          Text(
             "Don’t have account yet?",
-            style: TextStyle(
-                color: Color.fromRGBO(105, 108, 117, 1), fontSize: 16),
+            style: TextStyle(color: myWhite, fontSize: 16),
           ),
           TextButton(
               onPressed: () {

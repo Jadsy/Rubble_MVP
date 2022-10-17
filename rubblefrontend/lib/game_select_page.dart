@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rubblefrontend/compnents/game_button.dart';
+import 'package:rubblefrontend/components/game_button.dart';
+
+import 'components/mycolors.dart';
 
 class GameSelectPage extends StatelessWidget {
   const GameSelectPage({super.key});
@@ -8,18 +10,18 @@ class GameSelectPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(5, 11, 24, 1),
+        backgroundColor: rubbleColor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: Icon(Icons.arrow_back_ios, color: myWhite),
         ),
-        title: const Text(
+        title: Text(
           "Games",
           style: TextStyle(
-            color: Colors.white,
+            color: myWhite,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -29,38 +31,38 @@ class GameSelectPage extends StatelessWidget {
       ),
       body: Center(
         child: ListView(
-          padding: const EdgeInsets.all(30),
-          children: const [
+          padding: const EdgeInsets.all(70),
+          children: [
             GameButton(
-              mycolor: Color.fromRGBO(71, 29, 90, 1),
+              mycolor: deceiverColor,
               txt: "Deciever",
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 30,
             ),
             GameButton(
-              mycolor: Color.fromRGBO(242, 76, 60, 1),
+              mycolor: maffiaColor,
               txt: "Maffia",
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 30,
             ),
             GameButton(
-              mycolor: Color.fromRGBO(64, 201, 162, 1),
+              mycolor: wdgColor,
               txt: "Write, Draw, Guess",
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 30,
             ),
             GameButton(
-              mycolor: Color.fromRGBO(3, 101, 244, 1),
+              mycolor: chameleonColor,
               txt: "Chameleon",
             ),
-            SizedBox(
-              height: 20,
+            const SizedBox(
+              height: 30,
             ),
             GameButton(
-              mycolor: Color.fromRGBO(225, 81, 134, 1),
+              mycolor: charadesColor,
               txt: "Charades",
             ),
           ],

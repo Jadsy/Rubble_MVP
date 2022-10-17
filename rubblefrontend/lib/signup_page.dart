@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:rubblefrontend/compnents/common_button.dart';
-import 'package:rubblefrontend/compnents/common_textfield.dart';
+import 'package:rubblefrontend/components/common_button.dart';
+import 'package:rubblefrontend/components/common_textfield.dart';
 import 'package:rubblefrontend/game_select_page.dart';
+
+import 'components/mycolors.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -17,18 +19,18 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(5, 11, 24, 1),
+        backgroundColor: rubbleColor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
             Navigator.of(context).pop();
           },
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: Icon(Icons.arrow_back_ios, color: myWhite),
         ),
-        title: const Text(
+        title: Text(
           "Create an Account",
           style: TextStyle(
-            color: Colors.white,
+            color: myWhite,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'mycolors.dart';
 
 // ignore: must_be_immutable
 class CommonTextField extends StatelessWidget {
@@ -17,12 +18,11 @@ class CommonTextField extends StatelessWidget {
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             labelText: name,
-            labelStyle:
-                const TextStyle(color: Color.fromRGBO(105, 108, 117, 1)),
+            labelStyle: TextStyle(color: txtFieldColor),
             filled: true,
-            fillColor: const Color.fromRGBO(31, 36, 48, 1),
+            fillColor: myDarkGrey,
           ),
-          style: const TextStyle(color: Colors.white),
+          style: TextStyle(color: myWhite),
         ),
       ),
     );

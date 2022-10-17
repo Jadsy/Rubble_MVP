@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rubblefrontend/compnents/mycolors.dart';
+import 'package:rubblefrontend/components/mycolors.dart';
 import 'package:rubblefrontend/intro_page_two.dart';
-import 'compnents/common_button.dart';
+import 'components/common_button.dart';
 
 void main() {
   runApp(const RubbleMVP());
@@ -16,8 +16,7 @@ class RubbleMVP extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-          scaffoldBackgroundColor: const Color.fromRGBO(5, 11, 24, 1)),
+      theme: ThemeData(scaffoldBackgroundColor: rubbleColor),
       home: const IntroPage1(),
     );
   }
@@ -40,10 +39,10 @@ class _IntroPage1State extends State<IntroPage1> {
           const Spacer(
             flex: 2,
           ),
-          const Text(
+          Text(
             "We amp up \nthe party!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 48,
               fontWeight: FontWeight.bold,
             ),
@@ -52,10 +51,10 @@ class _IntroPage1State extends State<IntroPage1> {
           const Spacer(),
           Image.asset("images/intro.png"),
           const Spacer(),
-          const Text(
+          Text(
             "A variety of party games to \nmake the room go wild!",
             style: TextStyle(
-              color: Colors.white,
+              color: myWhite,
               fontSize: 20,
             ),
             textAlign: TextAlign.center,
@@ -71,15 +70,15 @@ class _IntroPage1State extends State<IntroPage1> {
               size: 10,
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(),
-            const Icon(
+            Icon(
               Icons.circle,
-              color: Color.fromRGBO(31, 36, 48, 1),
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(
