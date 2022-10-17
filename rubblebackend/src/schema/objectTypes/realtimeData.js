@@ -14,6 +14,8 @@ const userController = require("../../controllers/userData/UserController")
 
 //Maffiagame controllers
 const maffiaGameController = require('../../controllers/realtimeData/MaffiaGame/GameController')
+const gameData = require('./gameData')
+const userData = require('./userData')
 
 exports.civilianType = new GraphQLObjectType({
     name: 'Civilian',
@@ -30,13 +32,13 @@ exports.civilianType = new GraphQLObjectType({
 			}
         },
 		role: {
-			type: roleType,
+			type: gameData.roleType,
 			async resolve(parent, args) {
 				return await roleController.getSingleRole({ id: parent.role_id })
 			}
 		},
         user: {
-            type: userType,
+            type: userData.userType,
             async resolve(parent, args) {
                 return await userController.getSingleUser({ id: parent.user_id })
             }
@@ -59,13 +61,13 @@ exports.doctorType = new GraphQLObjectType({
 			}
         },
 		role: {
-			type: roleType,
+			type: gameData.roleType,
 			async resolve(parent, args) {
 				return await roleController.getSingleRole({ id: parent.role_id })
 			}
 		},
         user: {
-            type: userType,
+            type: userData.userType,
             async resolve(parent, args) {
                 return await userController.getSingleUser({ id: parent.user_id })
             }
@@ -88,13 +90,13 @@ exports.policeType = new GraphQLObjectType({
 			}
         },
 		role: {
-			type: roleType,
+			type: gameData.roleType,
 			async resolve(parent, args) {
 				return await roleController.getSingleRole({ id: parent.role_id })
 			}
 		},
         user: {
-            type: userType,
+            type: userData.userType,
             async resolve(parent, args) {
                 return await userController.getSingleUser({ id: parent.user_id })
             }
@@ -117,13 +119,13 @@ exports.mafiaType = new GraphQLObjectType({
 			}
         },
 		role: {
-			type: roleType,
+			type: gameData.roleType,
 			async resolve(parent, args) {
 				return await roleController.getSingleRole({ id: parent.role_id })
 			}
 		},
         user: {
-            type: userType,
+            type: userData.userType,
             async resolve(parent, args) {
                 return await userController.getSingleUser({ id: parent.user_id })
             }
@@ -145,13 +147,13 @@ exports.narratorType = new GraphQLObjectType({
 			}
         },
 		role: {
-			type: roleType,
+			type: gameData.roleType,
 			async resolve(parent, args) {
 				return await roleController.getSingleRole({ id: parent.role_id })
 			}
 		},
         user: {
-            type: userType,
+            type: userData.userType,
             async resolve(parent, args) {
                 return await userController.getSingleUser({ id: parent.user_id })
             }
