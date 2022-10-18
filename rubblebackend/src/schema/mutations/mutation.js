@@ -44,7 +44,7 @@ exports.Mutations = new GraphQLObjectType({
 			type: gameDataTypes.answerType,
 			args: {
 				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLID },
+				category_id: { type:  new GraphQLNonNull(GraphQLID) },
 			},
 			async resolve(parent, args) {
 		 		const data = await answerController.addAnswer(args)
@@ -55,7 +55,7 @@ exports.Mutations = new GraphQLObjectType({
 			type: gameDataTypes.answerType,
 			args: {
 				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLID },
+				category_id: { type: new GraphQLNonNull(GraphQLID) },
 			},
 			async resolve(parent, args) {
 		 		const data = await answerController.updateAnswer(args)
@@ -114,7 +114,7 @@ exports.Mutations = new GraphQLObjectType({
 			args: {
 				question: { type:  new GraphQLNonNull(GraphQLString) },
 				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLID },
+				category_id: { type:  new GraphQLNonNull(GraphQLID) },
 			},
 			async resolve(parent, args) {
 		 		const data = await questionController.addQuestion(args)
@@ -126,7 +126,7 @@ exports.Mutations = new GraphQLObjectType({
 			args: {
 				question: { type:  new GraphQLNonNull(GraphQLString) },
 				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLID },
+				category_id: { type:  new GraphQLNonNull(GraphQLID) },
 			},
 			async resolve(parent, args) {
 		 		const data = await questionController.updateQuestion(args)

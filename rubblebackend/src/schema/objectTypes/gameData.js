@@ -23,7 +23,7 @@ exports.answerType = new GraphQLObjectType({
         answer: { type: GraphQLString },
 		category_id: { type: GraphQLID },
 		category: {
-			type: chameleonCategoryType,
+			type: this.chameleonCategoryType,
 			async resolve(parent, args) {
 				return await chameleonCategoryController.getSingleChameleonCategory({ id: parent.category_id })
 			}
@@ -38,7 +38,7 @@ exports.chameleonCategoryType = new GraphQLObjectType({
         _id: { type: GraphQLID },
         title: { type: GraphQLString },
 		answers: {
-			type: new GraphQLList(answerType),
+			type: new GraphQLList(this.answerType),
 			async resolve(parent, args) {
 				return await chameleonCategoryController.getCategoryAnswers({ id: parent._id })
 			}
@@ -54,7 +54,7 @@ exports.questionType = new GraphQLObjectType({
         answer: { type: GraphQLString },
 		category_id: { type: GraphQLID },
 		category: {
-			type: deceiverCategoryType,
+			type: this.deceiverCategoryType,
 			async resolve(parent, args) {
 				return await deceiverCategoryController.getSingleDeceiverCategory({ id: parent.category_id })
 			}
@@ -69,7 +69,7 @@ exports.deceiverCategoryType = new GraphQLObjectType({
         _id: { type: GraphQLID },
         title: { type: GraphQLString },
 		answers: {
-			type: new GraphQLList(answerType),
+			type: new GraphQLList(this.answerType),
 			async resolve(parent, args) {
 				return await deceiverCategoryController.getCategoryQuestions({ id: parent._id })
 			}

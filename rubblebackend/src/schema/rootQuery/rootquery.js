@@ -8,14 +8,14 @@ const {
 } = graphql
 
 const maffiaGameController = require('../../controllers/realtimeData/MaffiaGame/GameController')
-
+const realtimeData = require('../objectTypes/realtimeData')
 
 // Define Root Query
 exports.RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',
 	fields: {
 		maffiaGame:{
-			type: maffiaGameType,
+			type: realtimeData.maffiaGameType,
 			args: { id: { type: GraphQLID } },
 			async resolve(parent, args) {
 				return await maffiaGameController.getSingleMaffiaGame(args)
