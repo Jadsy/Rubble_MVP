@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/game_button.dart';
+import 'package:rubblefrontend/maffia_menu.dart';
 
 import 'components/mycolors.dart';
 
@@ -25,45 +26,67 @@ class GameSelectPage extends StatelessWidget {
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
-          textAlign: TextAlign.center,
         ),
         centerTitle: true,
       ),
       body: Center(
         child: ListView(
-          padding: const EdgeInsets.all(70),
           children: [
+            const SizedBox(
+              height: 40,
+            ),
             GameButton(
               mycolor: deceiverColor,
               txt: "Deciever",
+              onTap: () {
+                debugPrint("Deciever");
+              },
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             GameButton(
               mycolor: maffiaColor,
               txt: "Maffia",
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const MaffiaMenu();
+                    },
+                  ),
+                );
+              },
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             GameButton(
               mycolor: wdgColor,
               txt: "Write, Draw, Guess",
+              onTap: () {
+                debugPrint("Write, Draw, Guess");
+              },
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             GameButton(
               mycolor: chameleonColor,
               txt: "Chameleon",
+              onTap: () {
+                debugPrint("Chameleon");
+              },
             ),
             const SizedBox(
-              height: 30,
+              height: 10,
             ),
             GameButton(
               mycolor: charadesColor,
               txt: "Charades",
+              onTap: () {
+                debugPrint("Charades");
+              },
             ),
           ],
         ),

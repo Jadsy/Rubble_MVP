@@ -5,64 +5,50 @@ import 'mycolors.dart';
 class GameButton extends StatelessWidget {
   final Color mycolor;
   final String txt;
-  const GameButton({super.key, required this.mycolor, required this.txt});
+  final GestureTapCallback onTap;
+  const GameButton(
+      {super.key,
+      required this.mycolor,
+      required this.txt,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return CustomPaint(
-      size: Size(225, (200 * 0.3730886850152905).toDouble()),
-      painter: RPSCustomPainter(mycolor: mycolor, txt: txt),
-    );
-  }
-}
-
-class RPSCustomPainter extends CustomPainter {
-  final Color mycolor;
-  final String txt;
-  RPSCustomPainter({required this.mycolor, required this.txt});
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint0Fill = Paint()..style = PaintingStyle.fill;
-    paint0Fill.color = myDarkGrey;
-    canvas.drawRRect(
-        RRect.fromRectAndCorners(Rect.fromLTWH(0, 0, size.width, size.height),
-            bottomRight: Radius.circular(size.width * 0.05504587),
-            bottomLeft: Radius.circular(size.width * 0.05504587),
-            topLeft: Radius.circular(size.width * 0.05504587),
-            topRight: Radius.circular(size.width * 0.05504587)),
-        paint0Fill);
-
-    var textStyle = TextStyle(
-      color: myWhite,
-      fontSize: 20,
-    );
-    var textSpan = TextSpan(
-      text: txt,
-      style: textStyle,
-    );
-    final textPainter = TextPainter(
-      text: textSpan,
-      textDirection: TextDirection.ltr,
-    );
-    textPainter.layout(
-      minWidth: 0,
-      maxWidth: size.width,
-    );
-    const offset = Offset(17, 47);
-    textPainter.paint(canvas, offset);
-
-    Paint paint1Fill = Paint()..style = PaintingStyle.fill;
-    paint1Fill.color = mycolor;
-    canvas.drawRRect(
-        RRect.fromRectAndCorners(
-            Rect.fromLTWH(0, 0, size.width, size.height * 0.65),
-            topLeft: Radius.circular(size.width * 0.05504587),
-            topRight: Radius.circular(size.width * 0.05504587)),
-        paint1Fill);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
+    return GestureDetector(
+        onTap: onTap,
+        child: Column(
+          children: [
+            Container(
+              height: 60,
+              width: double.infinity,
+              margin: const EdgeInsets.only(right: 20, left: 20),
+              decoration: BoxDecoration(
+                  color: mycolor,
+                  border: Border.all(
+                    color: mycolor,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+            ),
+            Container(
+              height: 30,
+              width: double.infinity,
+              margin: const EdgeInsets.only(right: 20, left: 20),
+              decoration: BoxDecoration(
+                  color: myDarkGrey,
+                  border: Border.all(
+                    color: myDarkGrey,
+                  ),
+                  borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20))),
+              child: Text(
+                "   $txt",
+                style: TextStyle(color: myWhite, fontSize: 20),
+              ),
+            ),
+          ],
+        ));
   }
 }
