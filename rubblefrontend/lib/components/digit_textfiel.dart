@@ -9,7 +9,7 @@ class DigitTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 70,
       width: 66,
       child: TextField(

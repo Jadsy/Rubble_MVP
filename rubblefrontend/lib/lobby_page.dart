@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/game_button.dart';
+import 'package:rubblefrontend/narrator_night_page.dart';
 
 import 'components/common_button.dart';
 import 'components/mycolors.dart';
@@ -46,10 +47,10 @@ class _LobbyPageState extends State<LobbyPage> {
           ),
           const Spacer(),
           GameButton(
-              mycolor: maffiaColor,
-              txt: "Maffia",
+              mycolor: mafiaColor,
+              txt: "Mafia",
               onTap: () {
-                debugPrint("maffia");
+                debugPrint("mafia");
               }),
           const Spacer(),
           Align(
@@ -69,7 +70,13 @@ class _LobbyPageState extends State<LobbyPage> {
           CommonButton(
               name: "Start",
               onPressed: () {
-                debugPrint("ll");
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return const NarratorNightPage();
+                    },
+                  ),
+                );
               }),
           const Spacer(),
         ],

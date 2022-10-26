@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/game_button.dart';
-import 'package:rubblefrontend/maffia_menu.dart';
+import 'package:rubblefrontend/mafia_menu.dart';
 
 import 'components/mycolors.dart';
 
@@ -46,13 +46,13 @@ class GameSelectPage extends StatelessWidget {
               height: 10,
             ),
             GameButton(
-              mycolor: maffiaColor,
-              txt: "Maffia",
+              mycolor: mafiaColor,
+              txt: "Mafia",
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const MaffiaMenu();
+                      return const MafiaMenu();
                     },
                   ),
                 );

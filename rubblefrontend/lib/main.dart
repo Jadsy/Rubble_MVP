@@ -16,7 +16,8 @@ class RubbleMVP extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(scaffoldBackgroundColor: rubbleColor),
+      theme: ThemeData(
+          scaffoldBackgroundColor: rubbleColor, fontFamily: "Opensans"),
       home: const IntroPage1(),
     );
   }

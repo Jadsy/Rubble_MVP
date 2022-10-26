@@ -4,19 +4,19 @@ import 'package:rubblefrontend/components/mycolors.dart';
 import 'package:rubblefrontend/join_page.dart';
 import 'package:rubblefrontend/lobby_page.dart';
 
-class MaffiaMenu extends StatefulWidget {
-  const MaffiaMenu({super.key});
+class MafiaMenu extends StatefulWidget {
+  const MafiaMenu({super.key});
 
   @override
-  State<MaffiaMenu> createState() => _MaffiaMenuState();
+  State<MafiaMenu> createState() => _MafiaMenuState();
 }
 
-class _MaffiaMenuState extends State<MaffiaMenu> {
+class _MafiaMenuState extends State<MafiaMenu> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: maffiaColor,
+        backgroundColor: mafiaColor,
         elevation: 0,
         leading: IconButton(
           onPressed: () {
@@ -25,7 +25,7 @@ class _MaffiaMenuState extends State<MaffiaMenu> {
           icon: Icon(Icons.arrow_back_ios, color: myWhite),
         ),
       ),
-      backgroundColor: maffiaColor,
+      backgroundColor: mafiaColor,
       body: Column(
         children: [
           const Spacer(),
@@ -46,7 +46,7 @@ class _MaffiaMenuState extends State<MaffiaMenu> {
                   children: [
                     Image.asset("images/maffialogo.png"),
                     Text(
-                      "Maffia",
+                      "Mafia",
                       style: TextStyle(
                         color: myWhite,
                         fontSize: 20,
@@ -57,15 +57,15 @@ class _MaffiaMenuState extends State<MaffiaMenu> {
                       Icons.info_outline_rounded,
                       color: myWhite,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   child: Text(
-                    "\“Kill\” civilians until you as a mafia are the majority, or as a civilian try to kill off the entire mafia. \n \nDuring the night, everyone keeps his or her eyes closed until the narrator \"awakens\" each role, beginning with the mafia, then the doctor, then the detective.",
+                    "“Kill” civilians until you as a mafia are the majority, or as a civilian try to kill off the entire mafia. \n \nDuring the night, everyone keeps his or her eyes closed until the narrator \"awakens\" each role, beginning with the mafia, then the doctor, then the detective.",
                     style: TextStyle(
                       color: myWhite,
                       fontSize: 18,
@@ -75,7 +75,7 @@ class _MaffiaMenuState extends State<MaffiaMenu> {
                 ),
                 const Spacer(),
                 CommonButton(
-                  name: "Host Game",
+                  name: "Create Game",
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
