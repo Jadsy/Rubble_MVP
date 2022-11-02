@@ -30,7 +30,7 @@ class _MafiaMenuState extends State<MafiaMenu> {
         children: [
           const Spacer(),
           Container(
-            height: 500,
+            height: 550,
             width: double.infinity,
             decoration: BoxDecoration(
                 color: rubbleColor,

@@ -6,7 +6,12 @@ import 'mycolors.dart';
 class MafiaRoles extends StatelessWidget {
   final Image image;
   final String role;
-  const MafiaRoles({super.key, required this.image, required this.role});
+  final GestureTapCallback onPressed;
+  const MafiaRoles(
+      {super.key,
+      required this.image,
+      required this.role,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +46,7 @@ class MafiaRoles extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const Spacer(),
-          CommonButton(
-              name: "Turn",
-              onPressed: () {
-                debugPrint("turn");
-              }),
+          CommonButton(name: "Turn", onPressed: onPressed),
           const SizedBox(
             height: 10,
           )

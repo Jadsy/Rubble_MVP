@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/mafia_roles.dart';
+import 'package:rubblefrontend/police_role_page.dart';
 
 class MafiaRolePage extends StatefulWidget {
   const MafiaRolePage({super.key});
@@ -14,6 +15,15 @@ class _MafiaRolePageState extends State<MafiaRolePage> {
     return MafiaRoles(
       image: Image.asset("images/mafia_role.png"),
       role: "Mafia",
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return const PoliceRolePage();
+            },
+          ),
+        );
+      },
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/game_button.dart';
-import 'package:rubblefrontend/narrator_night_page.dart';
+import 'package:rubblefrontend/narrator_page.dart';
 
 import 'components/common_button.dart';
 import 'components/mycolors.dart';
@@ -73,7 +73,7 @@ class _LobbyPageState extends State<LobbyPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const NarratorNightPage();
+                      return const NarratorPage();
                     },
                   ),
                 );
