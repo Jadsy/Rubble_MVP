@@ -38,7 +38,7 @@ class ResultPages extends StatelessWidget {
       body: Column(
         children: [
           Text(
-            "The game is over! We have completed \nthis game of maffia!",
+            "The game is over! We have completed \nthis game of mafia!",
             style: TextStyle(
               color: myLightWhite,
               fontSize: 16,
@@ -55,7 +55,7 @@ class ResultPages extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            "Maffia members:",
+            "Mafia members:",
             style: TextStyle(
               color: myLightWhite,
               fontSize: 16,
