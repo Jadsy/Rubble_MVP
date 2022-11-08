@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rubblefrontend/components/common_button.dart';
 import 'package:rubblefrontend/components/game_button.dart';
-import 'package:rubblefrontend/narrator_page.dart';
+import 'package:rubblefrontend/components/mycolors.dart';
 
-import 'components/common_button.dart';
-import 'components/mycolors.dart';
+import '../action_pages/narrator_select_page.dart';
 
 class LobbyPage extends StatefulWidget {
   const LobbyPage({super.key});
@@ -40,7 +40,7 @@ class _LobbyPageState extends State<LobbyPage> {
           Text(
             "Share to join",
             style: TextStyle(
-              color: myWhite,
+              color: myLightWhite,
               fontSize: 16,
             ),
             textAlign: TextAlign.center,
@@ -73,7 +73,7 @@ class _LobbyPageState extends State<LobbyPage> {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const NarratorPage();
+                      return const NarratorSelectPage();
                     },
                   ),
                 );

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/mafia_roles.dart';
-import 'package:rubblefrontend/mafia_role_page.dart';
+import 'package:rubblefrontend/role_pages/mafia_role_page.dart';
 
 class VillagerRolePage extends StatefulWidget {
   const VillagerRolePage({super.key});

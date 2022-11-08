@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/common_button.dart';
 import 'package:rubblefrontend/components/mycolors.dart';
-import 'package:rubblefrontend/join_page.dart';
-import 'package:rubblefrontend/lobby_page.dart';
+
+import 'join_page.dart';
+import 'lobby_page.dart';
 
 class MafiaMenu extends StatefulWidget {
   const MafiaMenu({super.key});

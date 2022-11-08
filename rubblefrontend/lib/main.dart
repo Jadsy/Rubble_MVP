@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/mycolors.dart';
-import 'package:rubblefrontend/intro_page_two.dart';
+
 import 'components/common_button.dart';
+import 'menu/intro_page_two.dart';
 
 void main() {
   runApp(const RubbleMVP());

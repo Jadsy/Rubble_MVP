@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/common_button.dart';
-import 'package:rubblefrontend/components/digit_textfiel.dart';
-import 'package:rubblefrontend/lobby_page.dart';
+import 'package:rubblefrontend/components/common_textfield.dart';
+import '../components/mycolors.dart';
+import 'game_select_page.dart';
 
-import 'components/mycolors.dart';
-
-class JoinGame extends StatefulWidget {
-  const JoinGame({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<JoinGame> createState() => _JoinGameState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _JoinGameState extends State<JoinGame> {
+class _SignUpPageState extends State<SignUpPage> {
+  TextEditingController nameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,51 +27,44 @@ class _JoinGameState extends State<JoinGame> {
           icon: Icon(Icons.arrow_back_ios, color: myWhite),
         ),
         title: Text(
-          "Join Game",
+          "Create an Account",
           style: TextStyle(
             color: myWhite,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
+          textAlign: TextAlign.center,
         ),
         centerTitle: true,
       ),
-      body: Column(
+      body: Center(
+          child: Column(
         children: [
-          Text(
-            "Enter the login code\nto join the game!",
-            style: TextStyle(
-              color: myWhite,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-            textAlign: TextAlign.center,
+          const Spacer(
+            flex: 2,
           ),
+          CommonTextField(name: "Username"),
           const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              DigitTextField(),
-              DigitTextField(),
-              DigitTextField(),
-              DigitTextField(),
-            ],
-          ),
+          CommonTextField(name: "Email Adress"),
+          const Spacer(),
+          CommonTextField(name: "Password"),
           const Spacer(),
           CommonButton(
-              name: "Join",
+              name: "Create an Account",
               onPressed: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (BuildContext context) {
-                      return const LobbyPage();
+                      return const GameSelectPage();
                     },
                   ),
                 );
               }),
-          const Spacer(),
+          const Spacer(
+            flex: 10,
+          ),
         ],
-      ),
+      )),
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/common_button.dart';
 import 'package:rubblefrontend/components/common_textfield.dart';
-import 'package:rubblefrontend/game_select_page.dart';
-import 'package:rubblefrontend/signup_page.dart';
+import 'package:rubblefrontend/menu/game_select_page.dart';
 
-import 'components/mycolors.dart';
+import '../components/mycolors.dart';
+import 'signup_page.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});

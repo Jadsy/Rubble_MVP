@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/game_button.dart';
-import 'package:rubblefrontend/mafia_menu.dart';
+import 'package:rubblefrontend/components/mycolors.dart';
 
-import 'components/mycolors.dart';
+import 'mafia_menu.dart';
 
 class GameSelectPage extends StatelessWidget {
   const GameSelectPage({super.key});

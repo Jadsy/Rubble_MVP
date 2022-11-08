@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/mafia_roles.dart';
-import 'package:rubblefrontend/doctor_role_page.dart';
+import 'package:rubblefrontend/role_pages/police_role_page.dart';
 
-class PoliceRolePage extends StatefulWidget {
-  const PoliceRolePage({super.key});
+class MafiaRolePage extends StatefulWidget {
+  const MafiaRolePage({super.key});
 
   @override
-  State<PoliceRolePage> createState() => _PoliceRolePageState();
+  State<MafiaRolePage> createState() => _MafiaRolePageState();
 }
 
-class _PoliceRolePageState extends State<PoliceRolePage> {
+class _MafiaRolePageState extends State<MafiaRolePage> {
   @override
   Widget build(BuildContext context) {
     return MafiaRoles(
-      image: Image.asset("images/police_role.png"),
-      role: "Police",
+      image: Image.asset("images/mafia_role.png"),
+      role: "Mafia",
       onPressed: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (BuildContext context) {
-              return const DoctorRolePage();
+              return const PoliceRolePage();
             },
           ),
         );

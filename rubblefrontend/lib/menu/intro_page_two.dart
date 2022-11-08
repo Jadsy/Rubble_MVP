@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:rubblefrontend/login_page.dart';
-import 'components/common_button.dart';
-import 'components/mycolors.dart';
+import 'package:rubblefrontend/components/common_button.dart';
+import 'package:rubblefrontend/menu/intro_page_three.dart';
+import '../components/mycolors.dart';
 
-class IntroPage3 extends StatefulWidget {
-  const IntroPage3({super.key});
+class IntroPage2 extends StatefulWidget {
+  const IntroPage2({super.key});
 
   @override
-  State<IntroPage3> createState() => _IntroPage3State();
+  State<IntroPage2> createState() => _IntroPage2State();
 }
 
-class _IntroPage3State extends State<IntroPage3> {
+class _IntroPage2State extends State<IntroPage2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class _IntroPage3State extends State<IntroPage3> {
             flex: 2,
           ),
           Text(
-            "Easy as \n1, 2, 3",
+            "Losing \nsucks!",
             style: TextStyle(
               color: myWhite,
               fontSize: 48,
@@ -30,13 +30,10 @@ class _IntroPage3State extends State<IntroPage3> {
             textAlign: TextAlign.center,
           ),
           const Spacer(),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Image.asset("images/intro3.png"),
-          ),
+          Image.asset("images/intro2.png"),
           const Spacer(),
           Text(
-            "Join a game using your own \nmobile device!",
+            "Designed to appeal for \naudience play along!",
             style: TextStyle(
               color: myWhite,
               fontSize: 20,
@@ -56,13 +53,13 @@ class _IntroPage3State extends State<IntroPage3> {
             const Spacer(),
             Icon(
               Icons.circle,
-              color: myDarkGrey,
+              color: yellowButton,
               size: 10,
             ),
             const Spacer(),
             Icon(
               Icons.circle,
-              color: yellowButton,
+              color: myDarkGrey,
               size: 10,
             ),
             const Spacer(
@@ -71,12 +68,12 @@ class _IntroPage3State extends State<IntroPage3> {
           ]),
           const Spacer(),
           CommonButton(
-            name: "Rubble!",
+            name: "Continue",
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (BuildContext context) {
-                    return const LogInPage();
+                    return const IntroPage3();
                   },
                 ),
               );

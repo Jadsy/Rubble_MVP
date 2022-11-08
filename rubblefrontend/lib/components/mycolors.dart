@@ -11,3 +11,4 @@ Color rubbleColor = const Color.fromRGBO(5, 11, 24, 1);
 Color myDarkGrey = const Color.fromRGBO(31, 36, 48, 1);
 Color myWhite = Colors.white;
 Color myLightWhite = const Color.fromRGBO(255, 255, 255, 0.5);
+Color deadRed = const Color.fromRGBO(190, 18, 60, 1);
