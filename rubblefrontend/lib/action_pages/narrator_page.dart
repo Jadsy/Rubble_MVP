@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:rubblefrontend/components/mystopwatch.dart';
 import 'package:rubblefrontend/components/narrator_steps.dart';
 import 'package:rubblefrontend/role_pages/villager_role_page.dart';
 import "package:scrollable_positioned_list/scrollable_positioned_list.dart";
@@ -16,32 +17,11 @@ class NarratorPage extends StatefulWidget {
 class _NarratorPageState extends State<NarratorPage> {
   final itemController = CarouselController();
   final itemListener = ItemPositionsListener.create();
-  /*Future scrollToItem(int index) async {
-    itemController.scrollTo(
-        index: index, alignment: 0.5, duration: const Duration(seconds: 1));
-  }*/
 
   void next() {
     itemController.nextPage(duration: const Duration(seconds: 1));
-    setState(() {
-      //daySteps[index].isDone = !daySteps[index].isDone;
-      //daySteps[count - 1].isDone = !daySteps[count - 1].isDone;
-    });
+    setState(() {});
     count += 1;
-    //print(_currentIndex);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    //WidgetsBinding.instance!.addPostFrameCallback((_) => scrollToItem(1));
-
-    itemListener.itemPositions.addListener(() {
-      /*final indices =
-          itemListener.itemPositions.value.map((item) => item.index).toList();
-      debugPrint(indices.toString());*/
-    });
   }
 
   int count = 1;
@@ -188,7 +168,8 @@ class _NarratorPageState extends State<NarratorPage> {
             ),
             textAlign: TextAlign.center,
           ),
-          Align(
+          const MyStopWatch(),
+          /*Align(
             alignment: Alignment.centerLeft,
             child: Text(
               "     Steps:",
@@ -197,6 +178,9 @@ class _NarratorPageState extends State<NarratorPage> {
                 fontSize: 16,
               ),
             ),
+          ),*/
+          const SizedBox(
+            height: 15,
           ),
           Expanded(
               child: CarouselSlider.builder(
@@ -205,42 +189,22 @@ class _NarratorPageState extends State<NarratorPage> {
                   key: ValueKey(daySteps[index].step),
                   shape: Border(bottom: BorderSide(color: myLightWhite)),
                   color: isDone ? yellowButton : rubbleColor,
-                  //dense: true,
-                  child: ListTile(
-                    title: Row(
-                        //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        //crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Spacer(),
-                          SizedBox(width: 200, child: daySteps[index].step),
-                          /*const Spacer(
-                              flex: 5,
-                            ),*/
-                          Align(
-                            alignment: Alignment.center,
-                            child: daySteps[index].image,
-                          ),
-                          const Spacer(),
-                          //daySteps[index].step,
-                        ]),
-                    onTap: () {
-                      setState(() {
-                        daySteps[index].isDone = !daySteps[index].isDone;
-                        debugPrint(daySteps[index].isDone.toString());
-                        //daySteps[count - 1].isDone = !daySteps[count - 1].isDone;
-                      });
-                    },
-                    textColor: myWhite,
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: daySteps[index].step,
+                        leading: daySteps[index].image,
+                        textColor: myWhite,
+                      ),
+                      const Spacer()
+                    ],
                   ),
-
-                  //
-                  //visualDensity: const VisualDensity(vertical: 4),
                 )),
             options: CarouselOptions(
               height: 20,
               initialPage: 0,
               scrollDirection: Axis.vertical,
-              viewportFraction: 0.2,
+              viewportFraction: 0.14,
               scrollPhysics: const NeverScrollableScrollPhysics(),
               reverse: false,
             ),
@@ -252,7 +216,6 @@ class _NarratorPageState extends State<NarratorPage> {
           CommonButton(
               name: "Next",
               onPressed: () {
-                //count += 1;
                 if (count <= 15) {
                   next();
                 } else {
