@@ -29,153 +29,172 @@ const doctorController = require('../../controllers/realtimeData/MaffiaGame/Doct
 const mafiaController = require('../../controllers/realtimeData/MaffiaGame/MafiaController')
 const narratorController = require('../../controllers/realtimeData/MaffiaGame/NarratorController')
 const policeController = require('../../controllers/realtimeData/MaffiaGame/PoliceController')
+const gameController = require('../../controllers/realtimeData/MaffiaGame/GameController')
 
 
+const userDataType = require('../objectTypes/userData')
+const userController = require('../../controllers/userData/UserController')
 // Define Mutations
 exports.Mutations = new GraphQLObjectType({
 	name: 'Mutations',
 	fields: {
+		//User
+
+	addUser: {
+		type: userDataType.userType,
+			args: {
+				username: { type: new GraphQLNonNull(GraphQLString) },
+				email: { type: new GraphQLNonNull(GraphQLString) },
+				password: { type: new GraphQLNonNull(GraphQLString) },
+				avatarURL: { type: new GraphQLNonNull(GraphQLString) },
+				isGuest: { type: new GraphQLNonNull(GraphQLBoolean) },
+			},
+			async resolve(parent, args) {
+		 		const data = await userController.addUser(args)
+		 		return data
+		 	}
+		 },
 		//Game Data Mutations
 		// ---------------------------------
 		//ChameleonGame 
 		// ---------------------------------
 		// Answer
-		addAnswer: {
-			type: gameDataTypes.answerType,
-			args: {
-				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLNonNull(GraphQLID) },
-			},
-			async resolve(parent, args) {
-		 		const data = await answerController.addAnswer(args)
-		 		return data
-		 	}
-		},
-		editAnswer: {
-			type: gameDataTypes.answerType,
-			args: {
-				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type: new GraphQLNonNull(GraphQLID) },
-			},
-			async resolve(parent, args) {
-		 		const data = await answerController.updateAnswer(args)
-		 		return data
-		 	}
-		},
-		deleteAnswer: {
-			type: gameDataTypes.answerType,
-			args: {
-				id: { type: new GraphQLNonNull(GraphQLID) }
-			},
-			async resolve(parent, args) {
-		 		const data = await answerController.deleteAnswer(args)
-		 		return data
-		 	}
-		},
-		// -----------------------
-		// Chameleon Category
-		// -----------------------
-		addChameleonCategory: {
-			type: gameDataTypes.chameleonCategoryType,
-			args: {
-				title: { type:  new GraphQLNonNull(GraphQLString) },
-			},
-			async resolve(parent, args) {
-		 		const data = await chameleonCategoryController.addChameleonCategory(args)
-		 		return data
-		 	}
-		},
-		editChameleonCategory: {
-			type: gameDataTypes.chameleonCategoryType,
-			args: {
-				title: { type:  new GraphQLNonNull(GraphQLString) },
-			},
-			async resolve(parent, args) {
-		 		const data = await chameleonCategoryController.updateChameleonCategory(args)
-		 		return data
-		 	}
-		},
-		deleteChameleonCategory: {
-			type: gameDataTypes.chameleonCategoryType,
-			args: {
-				id: { type: new GraphQLNonNull(GraphQLID) }
-			},
-			async resolve(parent, args) {
-		 		const data = await chameleonCategoryController.deleteChameleonCategory(args)
-		 		return data
-		 	}
-		},
-		// -----------------------
-		// DeceiverGame
-		// -----------------------
-		// Question
-		addQuestion: {
-			type: gameDataTypes.questionType,
-			args: {
-				question: { type:  new GraphQLNonNull(GraphQLString) },
-				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLNonNull(GraphQLID) },
-			},
-			async resolve(parent, args) {
-		 		const data = await questionController.addQuestion(args)
-		 		return data
-		 	}
-		},
-		editQuestion: {
-			type: gameDataTypes.questionType,
-			args: {
-				question: { type:  new GraphQLNonNull(GraphQLString) },
-				answer: { type:  new GraphQLNonNull(GraphQLString) },
-				category_id: { type:  new GraphQLNonNull(GraphQLID) },
-			},
-			async resolve(parent, args) {
-		 		const data = await questionController.updateQuestion(args)
-		 		return data
-		 	}
-		},
-		deleteQuestion: {
-			type: gameDataTypes.questionType,
-			args: {
-				id: { type: new GraphQLNonNull(GraphQLID) }
-			},
-			async resolve(parent, args) {
-		 		const data = await questionController.deleteQuestion(args)
-		 		return data
-		 	}
-		},
-		// -----------------------
-		// DeceiverCategory
-		// -----------------------
-		addDeceiverCategory: {
-			type: gameDataTypes.deceiverCategoryType,
-			args: {
-				title: { type:  new GraphQLNonNull(GraphQLString) },
-			},
-			async resolve(parent, args) {
-		 		const data = await deceiverCategoryController.addDeceiverCategory(args)
-		 		return data
-		 	}
-		},
-		editDeceiverCategory: {
-			type: gameDataTypes.deceiverCategoryType,
-			args: {
-				title: { type:  new GraphQLNonNull(GraphQLString) },
-			},
-			async resolve(parent, args) {
-		 		const data = await deceiverCategoryController.updateDeceiverCategory(args)
-		 		return data
-		 	}
-		},
-		deleteDeceiverCategory: {
-			type: gameDataTypes.deceiverCategoryType,
-			args: {
-				id: { type: new GraphQLNonNull(GraphQLID) }
-			},
-			async resolve(parent, args) {
-		 		const data = await deceiverCategoryController.deleteDeceiverCategory(args)
-		 		return data
-		 	}
-		},
+		// addAnswer: {
+		// 	type: gameDataTypes.answerType,
+		// 	args: {
+		// 		answer: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		category_id: { type:  new GraphQLNonNull(GraphQLID) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await answerController.addAnswer(args)
+		//  		return data
+		//  	}
+		// },
+		// editAnswer: {
+		// 	type: gameDataTypes.answerType,
+		// 	args: {
+		// 		answer: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		category_id: { type: new GraphQLNonNull(GraphQLID) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await answerController.updateAnswer(args)
+		//  		return data
+		//  	}
+		// },
+		// deleteAnswer: {
+		// 	type: gameDataTypes.answerType,
+		// 	args: {
+		// 		id: { type: new GraphQLNonNull(GraphQLID) }
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await answerController.deleteAnswer(args)
+		//  		return data
+		//  	}
+		// },
+		// // -----------------------
+		// // Chameleon Category
+		// // -----------------------
+		// addChameleonCategory: {
+		// 	type: gameDataTypes.chameleonCategoryType,
+		// 	args: {
+		// 		title: { type:  new GraphQLNonNull(GraphQLString) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await chameleonCategoryController.addChameleonCategory(args)
+		//  		return data
+		//  	}
+		// },
+		// editChameleonCategory: {
+		// 	type: gameDataTypes.chameleonCategoryType,
+		// 	args: {
+		// 		title: { type:  new GraphQLNonNull(GraphQLString) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await chameleonCategoryController.updateChameleonCategory(args)
+		//  		return data
+		//  	}
+		// },
+		// deleteChameleonCategory: {
+		// 	type: gameDataTypes.chameleonCategoryType,
+		// 	args: {
+		// 		id: { type: new GraphQLNonNull(GraphQLID) }
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await chameleonCategoryController.deleteChameleonCategory(args)
+		//  		return data
+		//  	}
+		// },
+		// // -----------------------
+		// // DeceiverGame
+		// // -----------------------
+		// // Question
+		// addQuestion: {
+		// 	type: gameDataTypes.questionType,
+		// 	args: {
+		// 		question: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		answer: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		category_id: { type:  new GraphQLNonNull(GraphQLID) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await questionController.addQuestion(args)
+		//  		return data
+		//  	}
+		// },
+		// editQuestion: {
+		// 	type: gameDataTypes.questionType,
+		// 	args: {
+		// 		question: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		answer: { type:  new GraphQLNonNull(GraphQLString) },
+		// 		category_id: { type:  new GraphQLNonNull(GraphQLID) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await questionController.updateQuestion(args)
+		//  		return data
+		//  	}
+		// },
+		// deleteQuestion: {
+		// 	type: gameDataTypes.questionType,
+		// 	args: {
+		// 		id: { type: new GraphQLNonNull(GraphQLID) }
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await questionController.deleteQuestion(args)
+		//  		return data
+		//  	}
+		// },
+		// // -----------------------
+		// // DeceiverCategory
+		// // -----------------------
+		// addDeceiverCategory: {
+		// 	type: gameDataTypes.deceiverCategoryType,
+		// 	args: {
+		// 		title: { type:  new GraphQLNonNull(GraphQLString) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await deceiverCategoryController.addDeceiverCategory(args)
+		//  		return data
+		//  	}
+		// },
+		// editDeceiverCategory: {
+		// 	type: gameDataTypes.deceiverCategoryType,
+		// 	args: {
+		// 		title: { type:  new GraphQLNonNull(GraphQLString) },
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await deceiverCategoryController.updateDeceiverCategory(args)
+		//  		return data
+		//  	}
+		// },
+		// deleteDeceiverCategory: {
+		// 	type: gameDataTypes.deceiverCategoryType,
+		// 	args: {
+		// 		id: { type: new GraphQLNonNull(GraphQLID) }
+		// 	},
+		// 	async resolve(parent, args) {
+		//  		const data = await deceiverCategoryController.deleteDeceiverCategory(args)
+		//  		return data
+		//  	}
+		// },
 		// -----------------------
 		// MaffiaGame
 		// -----------------------
@@ -421,36 +440,32 @@ exports.Mutations = new GraphQLObjectType({
 		// MaffiaGame Itself
 		// ----------------
 		addMaffiaGame: {
-			type: realtimeDataTypes.narratorType,
+			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				role_id: { type: new GraphQLNonNull(GraphQLID) },
-        		user_id: { type: new GraphQLNonNull(GraphQLID) },
-				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) } 
+				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
 			},
 			async resolve(parent, args) {
-		 		const data = await narratorController.addNarrator(args)
+		 		const data = await gameController.addMaffiaGame(args)
 		 		return data
 		 	}
 		},
 		editMaffiaGame: {
-			type: realtimeDataTypes.narratorType,
+			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				role_id: { type: new GraphQLNonNull(GraphQLID) },
-        		user_id: { type: new GraphQLNonNull(GraphQLID) },
-				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
+				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
 			},
 			async resolve(parent, args) {
-		 		const data = await narratorController.updateNarrator(args)
+		 		const data = await gameController.updateMaffiaGame(args)
 		 		return data
 		 	}
 		},
 		deleteMaffiaGame: {
-			type: realtimeDataTypes.narratorType,
+			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				id: { type: new GraphQLNonNull(GraphQLID) }
+				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
 			},
 			async resolve(parent, args) {
-		 		const data = await narratorController.deleteNarrator(args)
+		 		const data = await gameController.deleteMaffiaGame(args)
 		 		return data
 		 	}
 		},

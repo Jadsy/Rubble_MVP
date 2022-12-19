@@ -6,7 +6,8 @@ const {
 	GraphQLObjectType,
 	GraphQLID,
 	GraphQLBoolean,
-    GraphQLInt
+    GraphQLInt,
+    GraphQLList
 } = graphql
 
 const roleController = require('../../controllers/gameData/MaffiaGame/RoleController')
@@ -167,13 +168,13 @@ exports.maffiaGameType = new GraphQLObjectType({
         _id: { type: GraphQLID },
         lobby_code: { type: GraphQLInt },
         civilians:{
-            type: this.civilianType,
+            type: new GraphQLList(this.civilianType),
             async resolve(parent, args) {
                 return await maffiaGameController.getGameCivilians({ id: parent._id })
             }
         },
         mafias:{
-            type: this.mafiaType,
+            type: new GraphQLList(this.mafiaType),
             async resolve(parent, args) {
                 return await maffiaGameController.getGameMafias({ id: parent._id })
             }

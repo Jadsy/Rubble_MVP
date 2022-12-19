@@ -1,6 +1,6 @@
 // External Dependancies
 const boom = require('@hapi/boom')
-
+const ObjectId = require('mongodb').ObjectID;
 // Get Data Models
 const MaffiaGame = require('../../../models/realtimeData/MaffiaGame/MaffiaGame')
 const Mafia = require('../../../models/realtimeData/MaffiaGame/Mafia')
@@ -22,7 +22,7 @@ exports.getMaffiaGames = async () => {
 // Get single by id
 exports.getSingleMaffiaGame = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const maffiaGames = await MaffiaGame.findById(id)
 		return maffiaGames
 	} catch (err) {
@@ -44,7 +44,7 @@ exports.addMaffiaGame = async req => {
 // Update existing
 exports.updateMaffiaGame = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await MaffiaGame.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -56,7 +56,7 @@ exports.updateMaffiaGame = async req => {
 //Delete 
 exports.deleteMaffiaGame = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const maffiaGame = await MaffiaGame.findByIdAndRemove(id)
 		return maffiaGame
 	} catch (err) {
@@ -66,7 +66,7 @@ exports.deleteMaffiaGame = async req => {
 
 exports.getGameCivilians = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id 
 		const civilians = await Civilian.find({ maffia_game_id: id })
 		return civilians
 	} catch (err) {
@@ -76,7 +76,7 @@ exports.getGameCivilians = async req => {
 
 exports.getGameMafias = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id
 		const mafias = await Mafia.find({ maffia_game_id: id })
 		return mafias
 	} catch (err) {
@@ -86,7 +86,7 @@ exports.getGameMafias = async req => {
 
 exports.getGameDoctor = async req => {
 	try {
-		const id = req.id 
+		const id = ObjectId(req.id )
 		const doctor = await Doctor.find({ maffia_game_id: id })
 		return doctor
 	} catch (err) {
@@ -96,7 +96,7 @@ exports.getGameDoctor = async req => {
 
 exports.getGameNarrator = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id 
 		const narrator = await Narrator.find({ maffia_game_id: id })
 		return narrator
 	} catch (err) {
@@ -106,7 +106,7 @@ exports.getGameNarrator = async req => {
 
 exports.getGamePolice = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id 
 		const police = await Police.find({ maffia_game_id: id })
 		return police
 	} catch (err) {

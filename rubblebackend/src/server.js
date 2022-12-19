@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 
 // Connect to DB
 mongoose
-	.connect('mongodb://127.0.0.1/rubble_database')
+	.connect('mongodb://127.0.0.1/rubble_db')
 	.then(() => fastify.log.info(`Server connected to mongodb`))
 	.catch(err => fastify.log.info(`Failed to connect to mongodb`))
 

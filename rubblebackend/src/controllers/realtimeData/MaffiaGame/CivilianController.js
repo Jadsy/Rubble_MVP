@@ -17,7 +17,7 @@ exports.getCivilians = async () => {
 // Get single by id
 exports.getSingleCivilian = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const civilians = await Civilian.findById(id)
 		return civilians
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addCivilian = async req => {
 // Update existing
 exports.updateCivilian = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Civilian.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateCivilian = async req => {
 //Delete 
 exports.deleteCivilian = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const civilian = await Civilian.findByIdAndRemove(id)
 		return civilian
 	} catch (err) {

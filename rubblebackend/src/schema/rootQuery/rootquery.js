@@ -9,7 +9,7 @@ const {
 
 const maffiaGameController = require('../../controllers/realtimeData/MaffiaGame/GameController')
 const realtimeData = require('../objectTypes/realtimeData')
-
+const mafiaController = require('../../controllers/realtimeData/MaffiaGame/MafiaController')
 // Define Root Query
 exports.RootQuery = new GraphQLObjectType({
 	name: 'RootQueryType',

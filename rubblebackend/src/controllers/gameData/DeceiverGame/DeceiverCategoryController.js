@@ -19,7 +19,7 @@ exports.getDeceiverCategory = async () => {
 // Get single by id
 exports.getSingleDeceiverCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const deceiverCategory = await DeceiverCategory.findById(id)
 		return deceiverCategory
 	} catch (err) {
@@ -30,7 +30,7 @@ exports.getSingleDeceiverCategory = async req => {
 // Get category questions
 exports.getCategoryQuestions = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id 
 		const questions = await Question.find({ category_id: id })
 		return questions
 	} catch (err) {
@@ -52,7 +52,7 @@ exports.addDeceiverCategory = async req => {
 // Update existing
 exports.updateDeceiverCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await DeceiverCategory.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -64,7 +64,7 @@ exports.updateDeceiverCategory = async req => {
 //Delete 
 exports.deleteDeceiverCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const deceiverCategory = await DeceiverCategory.findByIdAndRemove(id)
 		return deceiverCategory
 	} catch (err) {
