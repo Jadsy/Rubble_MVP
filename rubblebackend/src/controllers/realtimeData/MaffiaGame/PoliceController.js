@@ -17,7 +17,7 @@ exports.getPolices = async () => {
 // Get single by id
 exports.getSinglePolice = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const polices = await Police.findById(id)
 		return polices
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addPolice = async req => {
 // Update existing
 exports.updatePolice = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Police.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updatePolice = async req => {
 //Delete 
 exports.deletePolice = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const police = await Police.findByIdAndRemove(id)
 		return police
 	} catch (err) {

@@ -17,7 +17,7 @@ exports.getQuestions = async () => {
 // Get single by id
 exports.getSingleQuestion = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const questions = await Question.findById(id)
 		return questions
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addQuestion = async req => {
 // Update existing
 exports.updateQuestion = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Question.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateQuestion = async req => {
 //Delete 
 exports.deleteQuestion = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const answer = await Question.findByIdAndRemove(id)
 		return answer
 	} catch (err) {

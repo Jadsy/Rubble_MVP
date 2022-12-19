@@ -17,7 +17,7 @@ exports.getAnswers = async () => {
 // Get single by id
 exports.getSingleAnswer = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const answers = await Answer.findById(id)
 		return answers
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addAnswer = async req => {
 // Update existing
 exports.updateAnswer = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Answer.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateAnswer = async req => {
 //Delete 
 exports.deleteAnswer = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const answer = await Answer.findByIdAndRemove(id)
 		return answer
 	} catch (err) {

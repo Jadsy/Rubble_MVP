@@ -17,7 +17,7 @@ exports.getNarrators = async () => {
 // Get single by id
 exports.getSingleNarrator = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const narrators = await Narrator.findById(id)
 		return narrators
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addNarrator = async req => {
 // Update existing
 exports.updateNarrator = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Narrator.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateNarrator = async req => {
 //Delete 
 exports.deleteNarrator = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const narrator = await Narrator.findByIdAndRemove(id)
 		return narrator
 	} catch (err) {

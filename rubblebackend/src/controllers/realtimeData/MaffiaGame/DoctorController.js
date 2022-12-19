@@ -17,7 +17,7 @@ exports.getDoctors = async () => {
 // Get single by id
 exports.getSingleDoctor = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const doctors = await Doctor.findById(id)
 		return doctors
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addDoctor = async req => {
 // Update existing
 exports.updateDoctor = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Doctor.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateDoctor = async req => {
 //Delete 
 exports.deleteDoctor = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const doctor = await Doctor.findByIdAndRemove(id)
 		return doctor
 	} catch (err) {

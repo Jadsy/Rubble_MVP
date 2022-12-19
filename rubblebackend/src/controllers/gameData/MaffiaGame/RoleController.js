@@ -17,7 +17,7 @@ exports.getRoles = async () => {
 // Get single by id
 exports.getSingleRole = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const roles = await Role.findById(id)
 		return roles
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addRole = async req => {
 // Update existing
 exports.updateRole = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Role.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateRole = async req => {
 //Delete 
 exports.deleteRole = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const role = await Role.findByIdAndRemove(id)
 		return role
 	} catch (err) {

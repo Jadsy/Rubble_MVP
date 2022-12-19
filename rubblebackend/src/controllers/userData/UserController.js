@@ -17,7 +17,7 @@ exports.getUsers = async () => {
 // Get single by id
 exports.getSingleUser = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const users = await User.findById(id)
 		return users
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addUser = async req => {
 // Update existing
 exports.updateUser = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await User.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateUser = async req => {
 //Delete 
 exports.deleteUser = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const user = await User.findByIdAndRemove(id)
 		return user
 	} catch (err) {

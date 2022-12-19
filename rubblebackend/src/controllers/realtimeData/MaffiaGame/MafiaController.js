@@ -17,7 +17,7 @@ exports.getMafias = async () => {
 // Get single by id
 exports.getSingleMafia = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const mafias = await Mafia.findById(id)
 		return mafias
 	} catch (err) {
@@ -39,7 +39,7 @@ exports.addMafia = async req => {
 // Update existing
 exports.updateMafia = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await Mafia.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -51,7 +51,7 @@ exports.updateMafia = async req => {
 //Delete 
 exports.deleteMafia = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const mafia = await Mafia.findByIdAndRemove(id)
 		return mafia
 	} catch (err) {

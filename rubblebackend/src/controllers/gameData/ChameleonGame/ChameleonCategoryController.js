@@ -19,7 +19,7 @@ exports.getChameleonCategory = async () => {
 // Get single by id
 exports.getSingleChameleonCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const chameleonCategory = await ChameleonCategory.findById(id)
 		return chameleonCategory
 	} catch (err) {
@@ -30,7 +30,7 @@ exports.getSingleChameleonCategory = async req => {
 // Get category answers (maybe get randomized 16)
 exports.getCategoryAnswers = async req => {
 	try {
-		const id = req.id 
+		const id = req.params === undefined ? req.id : req.params.id 
 		const answers = await Answer.find({ category_id: id })
 		return answers
 	} catch (err) {
@@ -52,7 +52,7 @@ exports.addChameleonCategory = async req => {
 // Update existing
 exports.updateChameleonCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const updateData = req
 		const update = await ChameleonCategory.findByIdAndUpdate(id, updateData, { new: true })
 		return update
@@ -64,7 +64,7 @@ exports.updateChameleonCategory = async req => {
 //Delete 
 exports.deleteChameleonCategory = async req => {
 	try {
-		const id = req.id
+		const id = req.params === undefined ? req.id : req.params.id
 		const chameleonCategory = await ChameleonCategory.findByIdAndRemove(id)
 		return chameleonCategory
 	} catch (err) {
