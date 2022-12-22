@@ -1,8 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rubblefrontend/components/common_button.dart';
 import 'package:rubblefrontend/components/common_textfield.dart';
 import '../components/mycolors.dart';
 import 'game_select_page.dart';
+
+class SignUp extends StatelessWidget {
+  const SignUp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final HttpLink httpLink = HttpLink("http://http://127.0.0.1:3000//");
+
+    final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
+      GraphQLClient(
+        link: httpLink,
+        cache: GraphQLCache(),
+      ),
+    );
+
+    return GraphQLProvider(
+      client: client,
+      child: const SignUpPage(),
+    );
+  }
+}
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -12,8 +34,21 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  String query = r"""mutation {
+                      addUser(
+                        username: $username, email: $email, password: $password, avatarURL: $avatarURL, isGuest: $isGuest) {
+                          username
+                          email
+                          password
+                          avatarURL
+                          isGuest
+                      }
+                    }""";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,34 +72,57 @@ class _SignUpPageState extends State<SignUpPage> {
         ),
         centerTitle: true,
       ),
-      body: Center(
-          child: Column(
-        children: [
-          const Spacer(
-            flex: 2,
-          ),
-          CommonTextField(name: "Username"),
-          const Spacer(),
-          CommonTextField(name: "Email Adress"),
-          const Spacer(),
-          CommonTextField(name: "Password"),
-          const Spacer(),
-          CommonButton(
-              name: "Create an Account",
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (BuildContext context) {
-                      return const GameSelectPage();
-                    },
-                  ),
-                );
-              }),
-          const Spacer(
-            flex: 10,
-          ),
-        ],
-      )),
+      body: Mutation(
+        options: MutationOptions(
+          document: gql(query),
+          update: (GraphQLDataProxy cache, QueryResult? result) {
+            return cache;
+          },
+        ),
+        builder: (RunMutation insert, QueryResult? result) {
+          return Center(
+            child: Column(
+              children: [
+                const Spacer(
+                  flex: 2,
+                ),
+                CommonTextField(
+                  name: "Username",
+                  controller: usernameController,
+                ),
+                const Spacer(),
+                CommonTextField(
+                    name: "Email Adress", controller: emailController),
+                const Spacer(),
+                CommonTextField(
+                    name: "Password", controller: passwordController),
+                const Spacer(),
+                CommonButton(
+                    name: "Create an Account",
+                    onPressed: () {
+                      insert(<String, dynamic>{
+                        "username": usernameController.text,
+                        "email": emailController.text,
+                        "password": passwordController.text,
+                        "avatarURL": "picture",
+                        "isGuest": false,
+                      });
+                      /*Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (BuildContext context) {
+                            return const GameSelectPage();
+                          },
+                        ),
+                      );*/
+                    }),
+                const Spacer(
+                  flex: 10,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

@@ -1,25 +1,35 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rubblefrontend/components/mycolors.dart';
 
 import 'components/common_button.dart';
 import 'menu/intro_page_two.dart';
 
 void main() {
-  runApp(const RubbleMVP());
+  runApp(RubbleMVP());
 }
 
-class RubbleMVP extends StatelessWidget {
-  const RubbleMVP({super.key});
+final httpLink = HttpLink("http://http://127.0.0.1:3000//");
 
+class RubbleMVP extends StatelessWidget {
+  RubbleMVP({super.key});
+
+  ValueNotifier<GraphQLClient> client =
+      ValueNotifier(GraphQLClient(cache: GraphQLCache(), link: httpLink));
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-          scaffoldBackgroundColor: rubbleColor, fontFamily: "Opensans"),
-      home: const IntroPage1(),
+    return GraphQLProvider(
+      client: client,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+            scaffoldBackgroundColor: rubbleColor, fontFamily: "Opensans"),
+        home: const IntroPage1(),
+      ),
     );
   }
 }

@@ -14,7 +14,7 @@ class LogInPage extends StatefulWidget {
 }
 
 class _LogInPageState extends State<LogInPage> {
-  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -45,9 +45,12 @@ class _LogInPageState extends State<LogInPage> {
           const Spacer(
             flex: 3,
           ),
-          CommonTextField(name: "Email Adress"),
+          CommonTextField(name: "Email Adress", controller: usernameController),
           const Spacer(),
-          CommonTextField(name: "Password"),
+          CommonTextField(
+            name: "Password",
+            controller: passwordController,
+          ),
           const Spacer(
             flex: 4,
           ),

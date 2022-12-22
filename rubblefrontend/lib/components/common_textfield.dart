@@ -4,8 +4,8 @@ import 'mycolors.dart';
 // ignore: must_be_immutable
 class CommonTextField extends StatelessWidget {
   String name;
-  CommonTextField({super.key, required this.name});
-  TextEditingController nameController = TextEditingController();
+  TextEditingController controller;
+  CommonTextField({super.key, required this.name, required this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class CommonTextField extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: TextField(
-          controller: nameController,
+          controller: controller,
           decoration: InputDecoration(
             border: const OutlineInputBorder(),
             labelText: name,
