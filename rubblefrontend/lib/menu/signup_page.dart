@@ -10,7 +10,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HttpLink httpLink = HttpLink("http://http://127.0.0.1:3000//");
+    final HttpLink httpLink = HttpLink("http://127.0.0.1:3000/graphql");
 
     final ValueNotifier<GraphQLClient> client = ValueNotifier<GraphQLClient>(
       GraphQLClient(
@@ -40,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   String query = r"""mutation {
                       addUser(
-                        username: $username, email: $email, password: $password, avatarURL: $avatarURL, isGuest: $isGuest) {
+                        username: username, email: email, password: password, avatarURL: avatarURL, isGuest: false) {
                           username
                           email
                           password
@@ -107,6 +107,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         "avatarURL": "picture",
                         "isGuest": false,
                       });
+                      debugPrint("test");
                       /*Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (BuildContext context) {

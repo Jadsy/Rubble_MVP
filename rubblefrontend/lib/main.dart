@@ -11,7 +11,7 @@ void main() {
   runApp(RubbleMVP());
 }
 
-final httpLink = HttpLink("http://http://127.0.0.1:3000//");
+final httpLink = HttpLink("http://127.0.0.1:3000/graphql");
 
 class RubbleMVP extends StatelessWidget {
   RubbleMVP({super.key});

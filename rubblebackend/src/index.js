@@ -1,5 +1,9 @@
 // Import Server
 const fastify = require('./server.js')
+const cors = require("@fastify/cors")
+fastify.register(cors, { 
+  
+})
 
 // Run the server!
 const start = async () => {
