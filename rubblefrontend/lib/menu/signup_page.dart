@@ -38,9 +38,8 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  String query = r"""mutation {
-                      addUser(
-                        username: username, email: email, password: password, avatarURL: avatarURL, isGuest: false) {
+  String query = """mutation AddUser(\$username: String!, \$email: String!, \$password: String!, \$avatarURL: String!, \$isGuest: Boolean!) {
+                      addUser(username: \$username, email: \$email, password: \$password, avatarURL: \$avatarURL, isGuest: \$isGuest) {
                           username
                           email
                           password
@@ -92,7 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const Spacer(),
                 CommonTextField(
-                    name: "Email Adress", controller: emailController),
+                    name: "Email Address", controller: emailController),
                 const Spacer(),
                 CommonTextField(
                     name: "Password", controller: passwordController),
