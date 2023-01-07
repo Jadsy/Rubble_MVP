@@ -46,8 +46,9 @@ exports.Mutations = new GraphQLObjectType({
 				username: { type: new GraphQLNonNull(GraphQLString) },
 				email: { type: new GraphQLNonNull(GraphQLString) },
 				password: { type: new GraphQLNonNull(GraphQLString) },
-				avatarURL: { type: new GraphQLNonNull(GraphQLString) },
-				isGuest: { type: new GraphQLNonNull(GraphQLBoolean) },
+				avatarURL: { type: GraphQLString },
+				isGuest: { type: GraphQLBoolean },
+				game_id: { type: GraphQLID}
 			},
 			async resolve(parent, args) {
 		 		const data = await userController.addUser(args)
@@ -246,6 +247,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.civilianType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
@@ -259,6 +262,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.civilianType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
@@ -286,6 +291,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.doctorType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) } 
@@ -299,6 +306,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.doctorType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
@@ -326,6 +335,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.policeType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) } 
@@ -339,6 +350,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.policeType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
@@ -366,6 +379,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.mafiaType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) } 
@@ -379,6 +394,8 @@ exports.Mutations = new GraphQLObjectType({
 			type: realtimeDataTypes.mafiaType,
 			args: {
 				is_alive: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_killed: { type: new GraphQLNonNull(GraphQLBoolean) },
+				is_awake: { type: new GraphQLNonNull(GraphQLBoolean) },
 				role_id: { type: new GraphQLNonNull(GraphQLID) },
         		user_id: { type: new GraphQLNonNull(GraphQLID) },
 				maffia_game_id: { type: new GraphQLNonNull(GraphQLID) }
@@ -442,7 +459,7 @@ exports.Mutations = new GraphQLObjectType({
 		addMaffiaGame: {
 			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
+				owner_id: { type: new GraphQLNonNull(GraphQLID) },
 			},
 			async resolve(parent, args) {
 		 		const data = await gameController.addMaffiaGame(args)
@@ -452,7 +469,8 @@ exports.Mutations = new GraphQLObjectType({
 		editMaffiaGame: {
 			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
+				owner_id: { type: GraphQLID },
+				is_open: { type: GraphQLBoolean }
 			},
 			async resolve(parent, args) {
 		 		const data = await gameController.updateMaffiaGame(args)
@@ -462,7 +480,7 @@ exports.Mutations = new GraphQLObjectType({
 		deleteMaffiaGame: {
 			type: realtimeDataTypes.maffiaGameType,
 			args: {
-				lobby_code: { type: new GraphQLNonNull(GraphQLInt) },
+				id: { type: new GraphQLNonNull(GraphQLID) }
 			},
 			async resolve(parent, args) {
 		 		const data = await gameController.deleteMaffiaGame(args)

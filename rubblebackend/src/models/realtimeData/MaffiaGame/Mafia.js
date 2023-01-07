@@ -8,6 +8,8 @@ const mafiaSchema = new mongoose.Schema({
   // gameData/MaffiaGame/Role
   role_id: ObjectId,
   is_alive: Boolean,
+  is_killed: Boolean,
+  is_awake: Boolean,
   maffia_game_id: ObjectId
 })
 

@@ -34,6 +34,11 @@ exports.getSingleMaffiaGame = async req => {
 exports.addMaffiaGame = async req => {
 	try {
 		const maffiaGame = new MaffiaGame(req)
+		let generated_lobby_code = Math.floor(Math.random() * 9000 + 1000)
+		while(MaffiaGame.find({lobby_code: generated_lobby_code}) == null){
+			generated_lobby_code = Math.floor(Math.random() * 9000 + 1000)
+		}
+		maffiaGame.lobby_code = generated_lobby_code
 		const newMaffiaGame = await maffiaGame.save()
 		return newMaffiaGame
 	} catch (err) {
@@ -86,7 +91,7 @@ exports.getGameMafias = async req => {
 
 exports.getGameDoctor = async req => {
 	try {
-		const id = ObjectId(req.id )
+		const id = req.params === undefined ? req.id : req.params.id
 		const doctor = await Doctor.find({ maffia_game_id: id })
 		return doctor
 	} catch (err) {
@@ -109,6 +114,16 @@ exports.getGamePolice = async req => {
 		const id = req.params === undefined ? req.id : req.params.id 
 		const police = await Police.find({ maffia_game_id: id })
 		return police
+	} catch (err) {
+		throw boom.boomify(err)
+	}
+}
+
+exports.getGameUsers = async req => {
+	try {
+		const id = req.params === undefined ? req.id : req.params.id 
+		const users = await User.find({ game_id: id })
+		return users
 	} catch (err) {
 		throw boom.boomify(err)
 	}

@@ -167,6 +167,14 @@ exports.maffiaGameType = new GraphQLObjectType({
     fields: () => ({
         _id: { type: GraphQLID },
         lobby_code: { type: GraphQLInt },
+        is_open: {type: GraphQLBoolean },
+        owner_id: { type: GraphQLID },
+        owner: {
+            type: userData.userType,
+            async resolve(parent, args) {
+                return await userController.getSingleUser({ id: parent.owner_id })
+            }
+        },
         civilians:{
             type: new GraphQLList(this.civilianType),
             async resolve(parent, args) {
@@ -196,6 +204,12 @@ exports.maffiaGameType = new GraphQLObjectType({
             async resolve(parent, args) {
                 return await maffiaGameController.getGamePolice({ id: parent._id })
             }
-        }
+        },
+        users:{
+            type: new GraphQLList(userData.userType),
+            async resolve(parent, args) {
+                return await maffiaGameController.getGameUsers({ id: parent._id })
+            }
+        },
     })
 })
