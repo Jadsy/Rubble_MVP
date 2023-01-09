@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rubblefrontend/components/common_button.dart';
 import 'package:rubblefrontend/components/game_button.dart';
 import 'package:rubblefrontend/components/mycolors.dart';
+import 'package:rubblefrontend/services/StorageService.dart';
 
 import '../action_pages/narrator_select_page.dart';
 
@@ -13,6 +14,23 @@ class LobbyPage extends StatefulWidget {
 }
 
 class _LobbyPageState extends State<LobbyPage> {
+  final StorageService _storageService = StorageService();
+  var user = "";
+
+  @override
+  void initState() {
+    // user = _storageService.readSecureData("User");
+    readData("User");
+  }
+
+  Future<String?> readData(String key) async {
+    // final StorageService _storageService = StorageService();
+    var readData = await _storageService.readSecureData(key);
+    setState(() {
+      user = readData.toString();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,6 +46,7 @@ class _LobbyPageState extends State<LobbyPage> {
         title: Text(
           "Game #-id-",
           style: TextStyle(
+
             color: myWhite,
             fontSize: 24,
             fontWeight: FontWeight.bold,
