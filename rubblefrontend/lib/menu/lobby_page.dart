@@ -25,7 +25,7 @@ class _LobbyPageState extends State<LobbyPage> {
   late int startIndex = data.indexOf(start);
   late int midleIndex = data.indexOf(midle, startIndex + start.length);
   late int endIndex = data.indexOf(end, midleIndex + midle.length);
-  late String user = data.substring(startIndex + start.length, midleIndex);
+  late String user = data.substring(startIndex + 3 * start.length, midleIndex);
   late String id = data.substring(midleIndex + midle.length, endIndex);
   @override
   void initState() {
@@ -86,12 +86,28 @@ class _LobbyPageState extends State<LobbyPage> {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "     Players: ${user}}",
+              "     Players:",
               style: TextStyle(
                 color: myWhite,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: 1,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(user),
+                  leading: Icon(
+                    Icons.person,
+                    color: myWhite,
+                    size: 30,
+                  ),
+                  textColor: myWhite,
+                );
+              },
             ),
           ),
           const Spacer(
