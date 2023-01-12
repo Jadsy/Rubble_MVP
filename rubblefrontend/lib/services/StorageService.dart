@@ -12,7 +12,7 @@ class StorageService {
         encryptedSharedPreferences: true,
       );
 
-  Future<String?> readSecureData(String key) async {
+  Future<dynamic> readSecureData(String key) async {
     var readData =
         await _secureStorage.read(key: key, aOptions: _getAndroidOptions());
     return readData;

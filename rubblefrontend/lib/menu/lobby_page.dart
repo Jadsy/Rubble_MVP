@@ -15,8 +15,18 @@ class LobbyPage extends StatefulWidget {
 
 class _LobbyPageState extends State<LobbyPage> {
   final StorageService _storageService = StorageService();
-  var user = "";
+  // User user = User(id: "", username: "");
+  // late String username;
+  var data = "";
+  static const start = "typename: ";
+  static const midle = ", _id:";
+  static const end = "}";
 
+  late int startIndex = data.indexOf(start);
+  late int midleIndex = data.indexOf(midle, startIndex + start.length);
+  late int endIndex = data.indexOf(end, midleIndex + midle.length);
+  late String user = data.substring(startIndex + start.length, midleIndex);
+  late String id = data.substring(midleIndex + midle.length, endIndex);
   @override
   void initState() {
     // user = _storageService.readSecureData("User");
@@ -26,8 +36,10 @@ class _LobbyPageState extends State<LobbyPage> {
   Future<String?> readData(String key) async {
     // final StorageService _storageService = StorageService();
     var readData = await _storageService.readSecureData(key);
+    debugPrint("readData: $readData");
+
     setState(() {
-      user = readData.toString();
+      data = readData.toString();
     });
   }
 
@@ -46,7 +58,6 @@ class _LobbyPageState extends State<LobbyPage> {
         title: Text(
           "Game #-id-",
           style: TextStyle(
-
             color: myWhite,
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -75,7 +86,7 @@ class _LobbyPageState extends State<LobbyPage> {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "     Players:",
+              "     Players: ${user}}",
               style: TextStyle(
                 color: myWhite,
                 fontSize: 16,

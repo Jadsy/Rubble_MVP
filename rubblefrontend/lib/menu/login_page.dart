@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:rubblefrontend/components/common_button.dart';
@@ -36,8 +38,9 @@ class _LogInPageState extends State<LogInPage> {
         options: MutationOptions(
           document: gql(query),
           update: (GraphQLDataProxy cache, QueryResult? result) {
-            _storageService.writeSecureData(
-                StorageItem("User", result!.data!["Login"].toString()));
+            debugPrint(result?.data!.toString());
+            var user = result!.data!["Login"].toString();
+            _storageService.writeSecureData(StorageItem("User", user));
             // return cache;
           },
         ),
